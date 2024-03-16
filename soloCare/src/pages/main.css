@@ -272,6 +272,16 @@
     margin-top: 50px;
 }
 
+.backtologin-button{
+    margin: auto;
+    --ion-color-base: black;
+    width: 280px;
+    height: 65px;
+    font-size: 18px;
+    text-transform: none;
+    margin-top: 10px;
+}
+
 .getotp-button{
     width: 295px;
 }
