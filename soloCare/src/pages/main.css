@@ -1,0 +1,1126 @@
+
+.splashscreen{
+    --ion-background-color: #073173;
+}
+
+.landingpage{
+    --ion-background-color: white;
+
+}
+
+.login-page{
+    --ion-background-color: white;
+}
+
+.logo-image {
+    display: block;
+    margin: auto; 
+    margin-top: 75%; 
+    max-width: 270px; 
+    height: auto; 
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+    align-self: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.landing-logo{
+    display: block;
+    margin: auto;
+    margin-top: 170px;
+    width: 100%;
+    height: 200px;
+    max-width: 270px;
+    overflow: hidden;
+    position: relative;
+    align-self: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+}
+
+.login-button, 
+.login2-button{
+    border-radius: 20px;
+    margin-top: 70px;
+    --ion-color-base: #073173;
+    text-transform: none;
+}
+
+.register-button, 
+.register2-button{
+    margin-top: 20px;
+    font-size: 20px;
+    --ion-color-base: black;
+    text-transform: none;
+}
+
+.register2-button{
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    align-self: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    margin-top: 0px;
+    text-transform: none;
+    font-size: 18px;
+    width: 270px;
+    height: 65px;
+    text-transform: none;
+}
+
+.text-text{
+    text-align: justify;
+    color: gray;
+}
+
+.box-box,
+.classification-card{
+    box-shadow: none;
+    border: none;
+    padding: 0%;
+    width: 270px;
+    margin-left: 42px;
+}
+
+.classification-card{
+    width: 280px;
+    margin-top: 25px;
+}
+
+.box-box1{
+    border: 1px solid #011534;
+    border-radius: 5px;
+    padding: 0%;
+    width: 250px;
+    margin-left: 37px;
+    height: 45px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.box-box2,
+.box-box3,
+.box-box4,
+.box-box5,
+.box-box6,
+.box-box7{
+    margin-top: -7px;
+    box-shadow: none;
+    border: none;
+    padding: 0%;
+    width: 220px;
+    height: 50px;
+    font-size: 17px;
+    color: #073173;
+}
+
+.box-box3{
+    margin-bottom: 20px;
+}
+
+.box-box4{
+    margin-bottom: 20px;
+}
+
+.box-box5{
+    margin-bottom: 85px;
+}
+
+.box-box6{
+    margin-bottom: -10px;
+}
+
+.box-box7{
+    margin-bottom: 30px;
+}
+
+.text-text1{
+    text-align: justify;
+    color: #073173;
+    font-size: 16px;
+}
+
+.text-text2, .text-text3{
+    color: #073173;
+    text-align: justify;
+    font-weight: 60;
+    margin-left: -10px;
+}
+
+.alert-icon{
+    color: #073173;
+    width: 27px;
+    height: 27px;
+}
+
+.asterisk{
+    color: red;
+}
+
+.login-button, 
+.register-button{
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    align-self: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    text-transform: none;
+    font-size: 18px;
+    max-width: 270px;
+    height: 65px;
+    text-transform: none;
+}
+
+.login-button{
+    margin-top: 60px;
+}
+
+.register-button{
+    margin-top: 20px;
+}
+
+.login2-button{
+    margin-top: 30px;
+    margin: auto;   
+    text-transform: none;
+    font-size: 18px;
+    width: 270px;
+    height: 65px;
+}
+
+.getotp-button,  
+.next-button{
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    align-self: center;
+    align-items: flex-start;
+    flex-shrink: 0;
+    text-transform: none;
+    font-size: 18px;
+    width: 270px;
+    height: 65px;
+    --ion-color-base: #073173;
+    margin-top: 20px;
+}
+
+.next1-button{
+    font-size: 18px;
+    width: 279px;
+    height: 65px;
+    --ion-color-base: #073173;
+    margin-top: 30px;
+    margin-left: 20px;
+    text-transform: none;
+}
+
+.next2-button, 
+.next3-button,
+.next4-button{
+    font-size: 18px;
+    width: 279px;
+    height: 65px;
+    --ion-color-base: #073173;
+    margin-top: 30px;
+    margin-left: 15px;
+    text-transform: none;
+}
+
+.next4-button{
+    width: 280px;
+    margin-left: 27px;
+}
+
+.next5-button{
+    font-size: 18px;
+    height: 65px;
+    --ion-color-base: #073173;
+    margin-top: 30px;
+    margin-left: 15px;
+    width: 280px;
+    text-transform: none;
+}
+
+.status-button,
+.uploadsubmit-button{
+    font-size: 18px;
+    height: 65px;
+    --ion-color-base: #073173;
+    text-transform: none;
+    width: 277px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.uploadsubmit-button{
+    margin-top: 50px;
+    width: 290px;
+}
+
+.statuspending-button{
+    margin: auto;
+    --ion-color-base: #011534;
+    width: 280px;
+    height: 65px;
+    font-size: 18px;
+    text-transform: none;
+    margin-top: 50px;
+}
+
+.getotp-button{
+    width: 295px;
+}
+
+.application-status, 
+.forgot-password{
+    font-size: 18px;
+    margin-top: 30px;
+    text-align: center;
+    text-decoration: underline;
+    color: #073173;
+}
+
+.forgot-password{
+    margin-left: 95px;
+    font-size: 17px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+
+.notAmember{
+    margin: auto;
+    font-size: 17px;
+    margin-top: 10px;
+    margin-left: 100px;
+    color: gray;
+}
+
+h1{
+    margin: auto;
+    color: #073173;
+    font-weight: bolder;
+    font-size: 42px;
+    margin-left: 40px;
+    margin-top: 30px;
+}
+
+.idnumber-form, 
+.password-form{
+    margin: auto;
+    padding: 15px;
+    margin: 10px 0px;
+    border: none;
+    border-bottom: 1px solid #073173;
+    width: 300px;
+    font-size: 18px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.rememberme-checkbox, 
+.rememberme1-checkbox,
+.fam-rememberme1-checkbox{
+    margin: auto;
+    margin-left: 20px;
+}
+
+.top-check{
+    margin-top: 10px;
+    color: #073173;
+    margin-left: -5px;
+}
+
+
+
+.rememberme1-checkbox,
+.fam-rememberme1-checkbox{
+    margin-top: 6px;
+    color: #073173;
+}
+
+.remember-label{
+    margin: auto;
+    margin-left: 10px;
+}
+
+
+.middle-label,
+.fam-middle-label{
+    margin: auto;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+
+.middle-name-text,
+.fam-middle-name-text{
+    color: #073173;
+}
+
+.divider {
+    margin: auto;
+    height: 1px;
+    width: 320px;
+    background-color: black;
+    margin-top: 2px; 
+    margin-bottom: 16px;
+}
+
+.contact-number{
+    color: #073173;
+    font-size: 18px;
+    border: 1px solid #073173;
+    border-radius: 10px;
+    width: 295px;
+    font-weight: bold;
+    margin: auto;
+    margin-top: 80px;
+    height: 60px;
+    margin-left: 15px;
+}
+
+.emergencyContact-form,
+.person-form{
+    color: #073173;
+    font-size: 18px;
+    border: 1px solid #073173;
+    font-weight: bold;
+    margin: auto;
+    height: 60px;
+    margin-left: 15px;
+    margin-top: 2px;
+    max-width: 279px;
+    margin-left: 34px;
+    border-radius: 5px;
+}
+
+.contact-form{
+    font-size: 16px;
+    border: 1px solid #073173;
+    margin: auto;
+    height: 60px;
+    margin-left: 15px;
+    margin-top: 2px;
+    max-width: 279px;
+    margin-left: 34px;
+    border-radius: 5px;
+}
+
+.emergencyContact-form,
+.person-form{
+    margin-left: 45px;
+}
+
+.countryCode {
+    margin-top: 0px;
+    font-size: 18px;
+    color: #073173;
+    font-weight:bolder ;
+    margin-left: 15px;
+    margin-right: -5px;
+  }
+
+.countryCode1 {
+    margin-top: 0px;
+    font-size: 16px;
+    font-weight:bolder ;
+    margin-left: 12px;
+    margin-right: -5px;
+  }
+
+
+  .input-1, 
+  .input-2, 
+  .input-3, 
+  .input-4{
+    width: 60px;
+    height: 80px;
+    border: 2px solid #073173;
+    border-radius: 5px;
+    outline: none;
+    text-align: center;
+    margin: 10px 0px;
+    font-size: 20px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .input-1{
+    margin-left: 35px;
+  }
+
+
+  .input-2{
+    margin-left: 45px;
+  }
+  .input-3{
+    margin-left: 55px;
+  }
+
+  .input-4{
+    margin-left: 65px;
+  }
+
+
+  .notes{
+    margin-top: 20px;
+    margin: auto;
+    font-size: 14px;
+    color: #073173;
+  }
+
+  .message-otp{
+    margin: auto;
+    margin-top: 2px;
+    
+  }
+
+  .resend, 
+  .change-number{
+    text-decoration: underline;
+    color: #073173;
+  }
+
+  .personal-info, .fam-info{
+    font-weight: bolder;
+    text-decoration: underline;
+    font-size: 17px;
+    margin-left: 40px;
+    margin-top: 50px;
+    color: #073173;
+  }
+
+
+  .sub-text{
+    font-size: 14px;
+    margin-left: 40px;
+    margin-top: -10px;
+    color: #073173;
+  }
+
+.surname-form, 
+.name-form, 
+.middle-form, 
+.hea-form,
+.occupation-form,
+.mi-form,
+.presadd-form,
+.soho-form,
+.philhealth-form,
+.fam-surname-form,
+.fam-name-form,
+.fam-middle-form,
+.fam-relationship-form,
+.fam-status-form,
+.fam-hea-form,
+.fam-school-form{
+    margin-top: -5px;
+    max-width: 279px;
+    margin-left: 30px;
+    border: 1px solid #073173;
+    border-radius: 5px;
+}
+
+.fam-birthday-form,
+.birthday-form{
+    margin-top: -8px;
+    width: 200px;
+    border: 1px solid #073173;
+    border-radius: 5px;
+    margin-left: -75px;
+    height: 57px;
+}
+
+.fam-hea-form,
+.fam-school-form{
+    margin-left: 34px;
+}
+.hea-form, 
+.occupation-form, 
+.mi-form,
+.philhealth-form,
+.fam-hea-form,
+.fam-school-form{
+    margin-top: 2px;
+}
+
+
+.pob-form{
+    margin-top: -1px;
+    max-width: 279px;
+    margin-left: 34px;
+    border: 1px solid #073173;
+    border-radius: 5px;
+}
+
+.name-form,
+.fam-name-form{
+    width: 200px;
+}
+
+.fam-age-form,
+.age-form{
+    margin-top: -5px;
+    margin-left: 30px;
+    border: 1px solid #073173;
+    border-radius: 5px;
+    width: 70px;
+}
+
+.mi-form{
+    width: 279px;
+}
+
+.occupation-form, 
+.mi-form,
+.presadd-form,
+.soho-form{
+    width: 279px;
+    margin-top: 1px;
+}
+
+.suffix-form,
+.fam-suffix-form{
+    width: 75px;
+    border: 1px solid #073173;
+    border-radius: 5px;
+    margin-top: -10px;
+    height: 58px;
+    margin-left: -10px;
+}
+
+.surname-text, 
+.name-text, 
+.middle-text, 
+.pob-text, 
+.sex-text, 
+.contact-text, 
+.hea-text,
+.occupation-text,
+.mi-text,
+.presadd-text,
+.soho-text,
+.fourps-text,
+.philhealth-text,
+.fam-surname-text,
+.fam-name-text,
+.fam-middle-text,
+.fam-relationship-text,
+.fam-status-text,
+.fam-hea-text,
+.fam-school-text,
+.fam-age-text,
+.age-text,
+.emergencyContact-text,
+.person-text{
+    color: #073173;
+    font-size: 16px;
+    margin-left: 40px;
+}
+
+.fam-birthday-text,
+.birthday-text{
+    color: #073173;
+    font-size: 16px;
+    margin-left: -65px;
+    margin-top: -22px;
+}
+
+.person-text{
+    margin-top: 25px;
+    font-size: 14px;
+}
+
+.emergencyContact-text{
+    margin-top: 15px;
+}
+
+.person-text,
+.emergencyContact-text{
+    margin-left: 50px;
+}
+
+.suffix-text,
+.fam-suffix-text{
+    color: #073173;
+    font-size: 16px;
+    margin-top: -25px;
+}
+
+.name-text, 
+.middle-text, 
+.pob-text, 
+.sex-text,
+.contact-text, 
+.hea-text, 
+.occupation-text,
+.mi-text,
+.presadd-text,
+.soho-text,
+.fourps-text,
+.philhealth-text,
+.fam-name-text,
+.fam-middle-text,
+.fam-status-text,
+.fam-hea-text,
+.fam-school-text,
+.fam-age-text{
+    margin-top: 15px;
+}
+
+.age-text{
+    margin-top: -5px;
+}
+
+.scroll-content {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  .placeholders{
+    margin-left: 100px;
+  }
+
+.gender-button,
+.yesno-button{
+    border: 1px solid #073173;
+    color: #073173;
+    --indicator-color: white;
+    font-size: 16px;
+}
+
+.gender-container, 
+.female-container,
+.yes-container,
+.no-container{
+    margin-top: -5px;
+    border: 1px solid #073173;
+    border-radius: 5px;
+    padding: 0%;
+    height: 50px;
+}
+
+.gender-container{
+    margin-left: 29px;
+    width: 135px;
+}
+
+.yes-container{
+    width: 135px;
+    margin-left: 25px;
+}
+
+.no-container{
+    width: 135px;
+    margin-left: -5px;
+}
+
+.female-container{
+    margin-left: -5px;
+    width: 140px;
+}
+
+ion-radio {
+    --border-radius: 4px;
+    --inner-border-radius: 4px;
+  
+    --color: #ddd;
+    --color-checked: #073173;
+  }
+  
+  ion-radio.ios::part(container) {
+    width: 20px;
+    height: 20px;
+  
+    border: 2px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .radio-checked.ios::part(container) {
+    border-color: #073173;
+  }
+
+  .fam-card{
+    width: 280px;
+    height: 170px;
+    margin-left: 40px;
+    border: 1px solid #073173;
+    border-radius: 5px;
+    margin-top: 30px;
+  }
+
+  .add-icon{
+    width: 62px;
+    height: 62px;
+    display: block;
+    margin: auto; 
+    color: #073173;
+    margin-top: 50px;
+  }
+
+  .name-list,
+  .rs-list,
+  .age-list,
+  .dob-list,
+  .status-list,
+  .educ-list,
+  .school-list{
+    color: #073173;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .label-text{
+    margin: auto;
+    margin-left: 1px;
+    margin-top: 6px;
+  }
+
+  .check-icon{
+    margin: auto;
+    display: block;
+    margin-top: 150px;
+    width: 160px;
+    height: 160px;
+    color: #073173;
+  }
+  
+.text-box,
+.text-box2{
+    margin: auto;
+}
+
+.main-text{
+    color:#073173;
+    font-size: 14px;
+    text-align: center;
+}
+
+.main-text2,
+.main-text3{
+    color: gray;
+    font-size: 9px;
+    text-align: center;
+    margin-top: -10px;
+}
+
+.main-text3{
+    font-size: 11px;
+}
+
+.applicationStatus-box,
+.applicationStatus-box1{
+    color: #073173;
+    margin: auto;
+}
+
+.applicationStatus-box1,
+.applicationStatus-text1{
+    margin-top: 80px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.applicationStatus-text,
+.applicationStatus{
+    font-size: 16px;
+    margin-top: 100px;
+    text-align: center;
+}
+
+.applicationStatus{
+    font-weight: bolder;
+    margin-left: 10px;
+}
+
+
+.applicationStatus1{
+    font-weight: bolder;
+    margin-left: 50px;
+    font-size: 18px;
+}
+
+.ticketId{
+    padding: 0;
+    margin: auto;
+    width: 280px;
+    height: 235px;
+    margin-top: 30px;
+    border: 1x solid #073173;
+    border-radius: 25px;
+    background: #073173;
+    box-shadow: none;
+}
+
+.ticketIdHeader{
+    margin-top: 5px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}
+
+.divider1{
+    position: relative;
+    overflow: hidden;
+    border: 1px solid white;
+    color: #ffffff;
+    width: 285px;
+    padding: 0;
+    margin-left: -20px;
+}
+
+.ticketIdLogo{
+    margin-top: 10px;
+    width: 40px;
+    height: 56px;
+}
+
+.ticketId-name{
+    color: white;
+    text-align: center;
+    margin-left: -45px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.ticketIdName-container{
+    margin-top: 20px;
+}
+
+.ticketId-brgy{
+    color: white;
+    opacity: 0.75;
+    font-weight: 50;
+    margin-left: -45px;
+    font-size: 12px;
+}
+
+.ticketIdbrgy-container{
+    margin-top: -5px;
+}
+
+.ticketId-date,
+.ticketId-datelabel,
+.ticketId-time,
+.ticketId-timelabel{
+    color: white;
+}
+
+.ticketId-date,
+.ticketId-time{
+    font-size: 16px;
+    text-align: center;
+    margin-left: 30px;
+}
+
+.ticketId-datelabel,
+.ticketId-timelabel{
+    margin-left: 10px;
+    font-size: 12px;
+    font-weight: lighter;
+    opacity: .75;
+}
+
+.box1{
+    border: 1px solid #073173;
+    border-radius: 10px;
+    width: 316px;
+    margin: auto;
+    margin-top: 30px;
+    padding: 0;
+}
+
+.text1{
+    color: #073173;
+    font-size: 14px;
+}
+
+.image-icon,
+.coa-text,
+.pic-text,
+.image1-icon,
+.pic-text1,
+.pic-text2,
+.pic-text3,
+.pic-text4,
+.pic-text5,
+.span-text{
+    color: #073173;
+}
+
+.span-text{
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.coa-text{
+    font-weight: bold;
+    margin-left: -40px;
+    margin-top: 70px;
+    font-size: 16px;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.pic-text{
+    font-weight: bold;
+    margin-left: -40px;
+    margin-top: 10px;
+    font-size: 16px;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.pic-text1{
+    font-weight: bold;
+    margin-left: -40px;
+    margin-top: -1px;
+    font-size: 16px;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.pic-text2{
+    font-weight: bold;
+    margin-left: -40px;
+    margin-top: 13px;
+    font-size: 16px;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.pic-text3{
+    font-weight: bold;
+    margin-left: -40px;
+    margin-top: -2px;
+    font-size: 16px;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.pic-text4{
+    font-weight: bold;
+    margin-left: -40px;
+    margin-top: 60px;
+    font-size: 16px;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.pic-text5{
+    font-weight: bold;
+    margin-left: -40px;
+    margin-top: -5px;
+    font-size: 16px;
+    margin-right: -20px;
+    padding: 0;
+}
+
+.image-icon{
+    width: 125px;
+    height: 171px;
+    margin-left: 5px;
+    margin-top: 20px;
+    margin-right: -5px;
+    font-weight: 20px;
+    --ionicon-stroke-width: 10px;
+    padding: 0;
+}
+
+.image1-icon{
+    width: 125px;
+    height: 171px;
+    margin-left: 5px;
+    margin-top: -40px;
+    margin-right: -5px;
+    font-weight: 20px;
+    --ionicon-stroke-width: 10px;
+    padding: 0;
+}
+
+.upload-button{
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 500;
+    width: 190px;
+    height: 50px;
+    color: #073173;
+    border: 2px solid #073173;
+    border-radius: 5px;
+    padding: 0;
+    margin-left: -40px;
+}
+
+.upload1-button{
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 500;
+    width: 190px;
+    height: 50px;
+    color: #073173;
+    border: 2px solid #073173;
+    border-radius: 5px;
+    padding: 0;
+    margin-left: -40px;
+}
+
+.coa-button,
+.req-button{
+    --ion-color-base: #073173;
+    width: 316px;
+    height: 65px;
+    border-radius: 20px;
+    font-size: 18px;
+    text-transform: none;
+    margin: auto;
+}
+
+.req-text{
+    color: #073173;
+    font-size: 14px;    
+}
+
+.req-list{
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.req-sublist{
+    margin-left: 50px;
+    margin-right: 10px;
+    margin-top: 5px;
+    list-style-type: circle;
+}
+
+.agreement-check{
+    margin-left: 25px;
+}
+
+.agreement-box{
+    margin-top: -15px;
+    box-shadow: none;
+    border: none;
+    padding: 0%;
+    width: 145px;
+    height: 120px;
+    font-size: 14.5px;
+    color: #011534;
+}
+
+.agreement-text{
+    margin-left: -121px;
+    text-align: justify;
+}
