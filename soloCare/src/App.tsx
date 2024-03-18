@@ -44,7 +44,7 @@ import uploadRequirementspagetwo from './pages/uploadRequirementspagetwo';
 import uploadRequirementspagethree from './pages/uploadRequirementspagethree';
 import requirementSubmit from './pages/requirementSubmit';
 import requirementStatuspending from './pages/requirementStatuspending';
-import requirementStatusresubmit from './pages/requirementStatusreject';
+import requirementStatusresubmit from './pages/requirementStatusresubmit';
 import requirementStatusapproved from './pages/requirementStatusapproved';
 
 setupIonicReact();
