@@ -1,39 +1,34 @@
-import { IonButton, IonContent, IonImg, IonPage } from "@ionic/react";
-import { useHistory } from 'react-router-dom';
 import React from "react";
-import  './main.css'
+import { useHistory } from 'react-router-dom';
+import './main.css';
 
-const landingPage : React.FC =() => {
-
+const LandingPage = () => {
     const history = useHistory();
 
-  const handleLoginClick = () => {
-    history.push('/login'); 
-  };
+    const handleLoginClick = () => {
+        history.push('/login'); 
+    };
 
-  const handleRegisterClick = () => {
-    history.push('/verification');
-  };
+    const handleRegisterClick = () => {
+        history.push('/verification');
+    };
 
-  const handleApplicationClick = () => {
-    history.push('/applicationStatusapproved')
-  }
-    
-return (
-    <IonPage>
-        <IonContent className="landingpage">
-            <IonImg className="landing-logo" src="/solocare-blacklogo.png"></IonImg>
-            <IonButton className="login-button" shape="round" expand="block" onClick={handleLoginClick} color="custom-color">
+    const handleApplicationClick = () => {
+        history.push('/applicationStatusapproved');
+    };
+
+    return (
+        <div className="landingpage">
+            <img className="landing-logo" src="/solocare-blacklogo.png" alt="Logo" />
+            <button className="login-button" onClick={handleLoginClick}>
                 Log in
-            </IonButton>
-            <IonButton className="register-button" shape="round" expand="block" onClick={handleRegisterClick} color="custom-color">
+            </button>
+            <button className="register-button" onClick={handleRegisterClick}>
                 Register
-            </IonButton>
+            </button>
             <p className="application-status" onClick={handleApplicationClick}><b>Application Status</b></p>
-        </IonContent> 
-    </IonPage>
-)
+        </div>
+    );
+};
 
-}
-
-export default landingPage;
+export default LandingPage;
