@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* *{
+    @apply outline-dotted outline-1 outline-red-400
+} */
+
+button{
+    @apply p-3 rounded-lg w-full text-white
+}
+
+.btn-primary{
+    @apply bg-primary
+}
+.btn-secondary{
+    @apply bg-black
+}
+input{
+    @apply text-lg p-2 border-[1px] border-primary w-full rounded-md
+}

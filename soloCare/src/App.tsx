@@ -21,8 +21,9 @@ import '@ionic/react/css/flex-utils.css';
 import '@ionic/react/css/display.css';
 
 /* Theme variables */
+import './index.css'
 import './theme/custom.css'
-import './theme/variables.css';
+import './theme/tailwind.css'
 import splashScreen from './pages/splashScreen';
 import landingPage from './pages/landingPage';
 import login from './pages/login';
