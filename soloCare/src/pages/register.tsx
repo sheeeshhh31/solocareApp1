@@ -70,7 +70,7 @@ const Register = () => {
         </button>
       </div>
       <div className="scroll-content">
-        <h1 className="text-4xl font-bold">Register</h1>
+        <h1 className="text-4xl font-bold text-blue-900" >Register</h1>
         <div className="flex gap-2 border-primary border-[1px] p-1 rounded-md my-5">
           <div>
             <AlertCircleOutline color="#00000" height="25px" width="25px" />
