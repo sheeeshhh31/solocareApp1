@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import "~@flaticon/flaticon-uicons/css/bold/rounded";
 /* *{
     @apply outline-dotted outline-1 outline-red-400
 } */
@@ -16,6 +16,18 @@ button{
 .btn-secondary{
     @apply bg-black
 }
+.btn-tertiary{
+    @apply text-black font-semibold 
+}
 input{
     @apply text-lg p-2 border-[1px] border-primary w-full rounded-md
+}
+select{
+    @apply text-lg p-2 border-[1px] border-primary w-full rounded-md
+}
+.fam-comp-card p>span{
+    @apply font-normal
+}
+.validation-error{
+    @apply text-red-400 font-normal text-sm
 }
