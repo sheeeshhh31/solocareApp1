@@ -1,5 +1,5 @@
 import InputWrapper from "./InputWrapper";
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { AlertCircleOutline } from "react-ionicons";
 import { familyCompItem } from "../types/types";
 import { useForm } from "react-hook-form";
@@ -7,53 +7,81 @@ import { differenceInYears } from "date-fns";
 interface FamilyCompositionFormProps {
   setCurrent?: any;
   setFamComps?: any;
+  famComps: familyCompItem[];
+  currentlyEditing: number | null;
+  setCurrentlyEditing?: any;
 }
 
-type item = {
-  surname: string;
-  givenName: string;
-  middleName: string;
-  suffix: string;
-  relationship: string;
-  age: number;
-  dateOfBirth: Date;
-  status: string;
-  educationalAttainment: string;
-  school: string;
-};
 const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
   setCurrent,
   setFamComps,
+  famComps,
+  currentlyEditing = null,
+  setCurrentlyEditing,
 }) => {
   const {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
-  } = useForm<item>();
-  const [family, setFamily] = useState<familyCompItem>();
+  } = useForm<familyCompItem>();
 
-  const onSubmit = (data: item) => {
-    console.log(data);
-    setFamComps((prev: familyCompItem[]) => {
-      const prevValue = prev.map((prev) => prev);
-      const newFam: familyCompItem = {
-        name: `${data.givenName} ${data.middleName || ""} ${data.surname} ${
-          data.suffix
-        }`,
-        relationship: data.relationship,
-        dateOfBirth: data.dateOfBirth,
-        age: differenceInYears(new Date(), data.dateOfBirth),
-        status: data.status,
-        educationalAttainment: data.educationalAttainment,
-        nameOfSchool: data.school,
-      };
-      prevValue.push(newFam);
-      return prevValue;
-    });
+  const ageRef = useRef<number | string>("Age");
+
+  const onSubmit = (data: familyCompItem) => {
+    if (currentlyEditing == null) {
+      setFamComps((prev: familyCompItem[]) => {
+        const prevValue = prev.map((prev) => prev);
+        const newFam: familyCompItem = {
+          givenName: data.givenName,
+          middleName: data.middleName,
+          surname: data.surname,
+          suffix: data.suffix,
+          relationship: data.relationship,
+          dateOfBirth: data.dateOfBirth,
+          age: differenceInYears(new Date(), data.dateOfBirth),
+          status: data.status,
+          educationalAttainment: data.educationalAttainment,
+          nameOfSchool: data.nameOfSchool,
+        };
+        prevValue.push(newFam);
+        return prevValue;
+      });
+    } else {
+      const newArr = famComps.map((fam) => fam);
+      newArr[currentlyEditing];
+
+      setFamComps(newArr);
+      setCurrentlyEditing(null);
+    }
+
     setCurrent(0);
   };
 
+
+  useEffect(() => {
+    if (currentlyEditing != null) {
+      const item = famComps[currentlyEditing];
+
+      for (const key in item) {
+        if (Object.prototype.hasOwnProperty.call(item, key)) {
+          const value = item[key as keyof familyCompItem]; // Using 'as keyof FamilyCompItem' to typecast key
+          if (key == "dateOfBirth" && value instanceof Date) {
+            setValue(key, new Date(value.toLocaleDateString()));
+          } else {
+            setValue(key as keyof familyCompItem, value);
+          }
+        }
+      }
+    }
+  }, []);
+  useEffect(() => {
+    if (watch("dateOfBirth")) {
+      ageRef.current =
+        differenceInYears(new Date(), watch("dateOfBirth")) || "";
+    }
+  }, [watch("dateOfBirth")]);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex gap-2 border-primary border-[1px] p-1 rounded-md my-5">
@@ -128,6 +156,7 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
           <InputWrapper label="Age" required={false}>
             <input
               {...register("age")}
+              value={ageRef.current}
               type="text"
               className="w-[70px]"
               placeholder="Age"
@@ -175,15 +204,31 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
         </InputWrapper>
         <InputWrapper label="School" required={true}>
           <input
-            {...register("school", { required: true })}
+            {...register("nameOfSchool", { required: true })}
             type="text"
             placeholder="School"
           />
         </InputWrapper>
       </div>
       <div>
-        <button className="btn-primary mt-10" type="submit">
-          Next
+        {currentlyEditing === null ? (
+          <button className="btn-primary mt-10" type="submit">
+            Next
+          </button>
+        ) : (
+          <button className="btn-primary mt-10" type="submit">
+            Save
+          </button>
+        )}
+        <button
+          onClick={() => {
+            setCurrentlyEditing(null);
+            setCurrent(0);
+          }}
+          className="btn-secondary mt-5"
+          type="button"
+        >
+          Cancel
         </button>
       </div>
     </form>

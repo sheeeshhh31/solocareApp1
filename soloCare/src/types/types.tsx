@@ -1,5 +1,8 @@
 export type familyCompItem = {
-    name:string,
+    givenName:string,
+    middleName?:string,
+    surname:string,
+    suffix?:string,
     relationship:string,
     age:number,
     dateOfBirth:Date,

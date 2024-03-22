@@ -1,45 +1,101 @@
-import { IonContent, IonPage } from "@ionic/react";
-import { AddCircleOutline } from "react-ionicons";
+import { IonContent, IonPage, IonModal } from "@ionic/react";
+import { AddCircleOutline, PencilOutline, TrashOutline } from "react-ionicons";
 import "./main.css";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, MouseEventHandler } from "react";
 import FamilyCompositionForm from "../components/FamilyCompositionForm";
 import { familyCompItem } from "../types/types";
 import { format } from "date-fns";
+
 const familyComposition: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false); // state of delete modal
+  const [currentlyEditing, setCurrentlyEditing] = useState<number | null>(null); //index of the fam item that is being edited by the user.
   const [famComps, setFamComps] = useState<familyCompItem[]>([
     {
-      name: "John Doe",
-      relationship: "Father",
-      age: 45,
-      dateOfBirth: new Date("1979-05-15"),
-      status: "Married",
+      givenName: "John",
+      middleName: "Doe",
+      surname: "Smith",
+      suffix: "Jr.",
+      relationship: "Brother",
+      age: 25,
+      dateOfBirth: new Date("1999-05-15"),
+      status: "Single",
       educationalAttainment: "Bachelor's Degree",
-      nameOfSchool: "University of XYZ"
+      nameOfSchool: "University of XYZ",
     },
     {
-      name: "Jane Doe",
-      relationship: "Mother",
-      age: 42,
-      dateOfBirth: new Date("1982-09-20"),
+      givenName: "Jane",
+      surname: "Doe",
+      relationship: "Sister",
+      age: 30,
+      dateOfBirth: new Date("1994-10-20"),
       status: "Married",
       educationalAttainment: "Master's Degree",
-      nameOfSchool: "University of ABC"
+      nameOfSchool: "ABC College",
     },
     {
-      name: "Alice Doe",
-      relationship: "Daughter",
-      age: 18,
-      dateOfBirth: new Date("2006-03-10"),
-      status: "Single",
-      educationalAttainment: "High School Graduate",
-      nameOfSchool: "High School XYZ"
-    }
+      givenName: "Alice",
+      middleName: "Grace",
+      surname: "Johnson",
+      suffix: "III",
+      relationship: "Father",
+      age: 55,
+      dateOfBirth: new Date("1969-12-01"),
+      status: "Married",
+      educationalAttainment: "PhD",
+      nameOfSchool: "University of DEF",
+    },
   ]);
 
   const [current, setCurrent] = useState(0); // decides which component to render.
+
+  const openDeleteModal: any = (index: number) => {
+    setIsOpen(true);
+    setCurrentlyEditing(index);
+  };
   return (
     <IonPage>
       <IonContent className="scroll-content">
+        <IonModal isOpen={isOpen}>
+          <div className="p-5 flex flex-col justify-center h-full">
+            <div>
+              <p className="text-center font-semibold">
+                Are you sure you want to remove family member?
+              </p>
+              <h1 className="capitalize text-center text-2xl my-10">
+                {famComps[currentlyEditing ?? 0].givenName}&nbsp;
+                {famComps[currentlyEditing ?? 0].middleName ?? ""}&nbsp;
+                {famComps[currentlyEditing ?? 0].surname ?? ""}&nbsp;
+                {famComps[currentlyEditing ?? 0].suffix ?? ""}
+              </h1>
+            </div>
+            <div>
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                }}
+                className="btn-secondary"
+                type="button"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => {
+                  setFamComps((prev) => {
+                    const newArr = prev.map((prev) => prev);
+                    newArr.splice(currentlyEditing ?? 0, 1);
+                    return newArr;
+                  });
+                  setCurrentlyEditing(null);
+                  setIsOpen(false);
+                }}
+                className="btn-primary mt-5"
+                type="button"
+              >
+                Confirm
+              </button>
+            </div>
+          </div>
+        </IonModal>
         <div className="p-5">
           <h1 className="text-4xl font-bold text-blue-900">Register</h1>
           {current == 0 ? (
@@ -48,30 +104,59 @@ const familyComposition: React.FC = () => {
                 Family Composition
               </p>
               <div className="flex flex-col gap-5">
-              {famComps?.map((fam) => (
-                <div className="border-[1px] border-primary rounded-lg">
-                  <div className="p-3 font-bold fam-comp-card">
-                    <p>
-                      Name: <span>{fam.name}</span>
-                    </p>
-                    <p>
-                      Relationship: <span>{fam.relationship}</span>
-                    </p>
-                    <p>
-                      Age: <span className="mr-2">{fam.age}</span>Date of Birth: <span>{format(fam.dateOfBirth, 'MMMM dd, yyyy')}</span>
-                    </p>
-                    <p>
-                      Status: <span>{fam.status}</span>
-                    </p>
-                    <p>
-                      Educational Attainment: <span>{fam.educationalAttainment}</span>
-                    </p>
-                    <p>
-                      Name of School: <span>{fam.nameOfSchool}</span>
-                    </p>
+                {famComps?.map((fam, index) => (
+                  <div
+                    key={index}
+                    className="border-[1px] border-primary rounded-lg flex"
+                  >
+                    <div className="p-3 font-bold fam-comp-card">
+                      <p>
+                        Name:{" "}
+                        <span>
+                          {fam.givenName} {fam.middleName} {fam.surname}{" "}
+                          {fam.suffix}
+                        </span>
+                      </p>
+                      <p>
+                        Relationship: <span>{fam.relationship}</span>
+                      </p>
+                      <p>
+                        Age: <span className="mr-2">{fam.age}</span>Date of
+                        Birth:{" "}
+                        <span>{format(fam.dateOfBirth, "MMMM dd, yyyy")}</span>
+                      </p>
+                      <p>
+                        Status: <span>{fam.status}</span>
+                      </p>
+                      <p>
+                        Educational Attainment:{" "}
+                        <span>{fam.educationalAttainment}</span>
+                      </p>
+                      <p>
+                        Name of School: <span>{fam.nameOfSchool}</span>
+                      </p>
+                    </div>
+                    <div className="flex flex-col justify-between">
+                      <div
+                        onClick={() => {
+                          setCurrentlyEditing(index);
+                          setCurrent(1);
+                        }}
+                        className="p-3"
+                      >
+                        <PencilOutline width="30px" height={"30px"} />
+                      </div>
+                      <div
+                        onClick={() => {
+                          openDeleteModal(index);
+                        }}
+                        className="p-3"
+                      >
+                        <TrashOutline width="30px" height={"30px"} />
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
               </div>
               <button
                 type="button"
@@ -87,7 +172,13 @@ const familyComposition: React.FC = () => {
               <button className="btn-primary mt-10">Submit</button>
             </div>
           ) : (
-            <FamilyCompositionForm setFamComps={setFamComps} setCurrent={setCurrent}/>
+            <FamilyCompositionForm
+              currentlyEditing={currentlyEditing}
+              famComps={famComps}
+              setFamComps={setFamComps}
+              setCurrent={setCurrent}
+              setCurrentlyEditing={setCurrentlyEditing}
+            />
           )}
         </div>
       </IonContent>
