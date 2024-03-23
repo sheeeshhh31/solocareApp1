@@ -10,7 +10,7 @@ const LandingPage = () => {
   };
 
   const handleRegisterClick = () => {
-    history.push("/verification");
+    history.push("/register.tsx");
   };
 
   const handleApplicationClick = () => {

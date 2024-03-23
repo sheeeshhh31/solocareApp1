@@ -50,7 +50,11 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
       });
     } else {
       const newArr = famComps.map((fam) => fam);
-      newArr[currentlyEditing];
+      newArr[currentlyEditing] = data;
+      newArr[currentlyEditing].age = differenceInYears(
+        new Date(),
+        data.dateOfBirth
+      );
 
       setFamComps(newArr);
       setCurrentlyEditing(null);
@@ -58,7 +62,6 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
 
     setCurrent(0);
   };
-
 
   useEffect(() => {
     if (currentlyEditing != null) {
@@ -108,7 +111,7 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
           {errors.surname && (
             <p className="validation-error">
               Please enter a valid surname containing only letters (uppercase or
-              lowercase) and dashes (-).
+              lowercase).
             </p>
           )}
         </InputWrapper>
@@ -122,6 +125,12 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
               type="text"
               placeholder="Given name"
             />
+            {errors.givenName && (
+              <p className="validation-error">
+                Please enter a valid surname containing only letters (uppercase
+                or lowercase).
+              </p>
+            )}
           </InputWrapper>
           <InputWrapper label="Suffix" required={false}>
             <input
@@ -130,6 +139,12 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
               type="text"
               placeholder="Suffix"
             />
+            {errors.suffix && (
+              <p className="validation-error">
+                Please enter a valid surname containing only letters (uppercase
+                or lowercase).
+              </p>
+            )}
           </InputWrapper>
         </div>
 
@@ -140,13 +155,18 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
               type="text"
               placeholder="Middle Name"
             />
+            {errors.middleName && (
+              <p className="validation-error">
+                Please enter a valid surname containing only letters (uppercase
+                or lowercase).
+              </p>
+            )}
           </InputWrapper>
         </div>
         <InputWrapper label="Relationship" required={true}>
           <select
             {...register("relationship", { required: true })}
             name="relationship"
-            value={" "}
           >
             <option value="Daughter">Daughter</option>
             <option value="Son">Son</option>

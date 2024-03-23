@@ -11,7 +11,7 @@ const splashScreen : React.FC = () => {
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-          history.push('/landingPage');
+          history.push('/landingPage.tsx');
         }, getRandomDelay());
 
         return () => clearTimeout(timeoutId);
@@ -21,12 +21,11 @@ const splashScreen : React.FC = () => {
 
 
     return (
-        <IonPage>
-            <IonContent className="splashscreen">
-                <IonImg  className="logo-image" 
-                src="/solocarelogo-white.png"></IonImg>
-            </IonContent>
-        </IonPage>
+        <div className="">
+            <div className="splashscreen">
+                <img src="/solocare-blacklogo.png" alt="Logo" />
+            </div>
+        </div>
     )
 }
 

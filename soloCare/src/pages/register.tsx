@@ -3,61 +3,12 @@ import "./main.css";
 import { ChevronBackOutline, AlertCircleOutline } from "react-ionicons";
 import { useMaskito } from "@maskito/react";
 import InputWrapper from "../components/InputWrapper";
+import { useForm } from "react-hook-form";
+import { memberRegItem } from "../types/types";
+import RegisterPartOne from "../components/RegisterPartOne";
 const Register = () => {
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-  const [showPopover, setShowPopover] = useState(false);
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [age, setAge] = useState<number | undefined>(undefined);
-
-  const phoneMask = useMaskito({
-    options: {
-      mask: [
-        /\d/,
-        /\d/,
-        /\d/,
-        " ",
-        /\d/,
-        /\d/,
-        /\d/,
-        " ",
-        /\d/,
-        /\d/,
-        /\d/,
-        /\d/,
-      ],
-    },
-  });
-
-  const datepickerRef = useRef<HTMLIonPopoverElement>(null);
-
-  const handleDateChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const selectedDate = new Date(event.target.value);
-    setSelectedDate(selectedDate);
-    calculateAge(selectedDate);
-  };
-
-  const calculateAge = (birthdate: Date) => {
-    const currentDate = new Date();
-    const ageDiff = currentDate.getFullYear() - birthdate.getFullYear();
-    setAge(ageDiff);
-  };
-
-  const openPopover = () => {
-    setShowPopover(true);
-  };
-
-  const closePopover = () => {
-    setShowPopover(false);
-  };
-
-  const formattedDate = selectedDate
-    ? selectedDate.toLocaleDateString(undefined, {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-      })
-    : "";
-
+  
+ 
   return (
     <div className="w-screen h-screen p-5 overflow-y-auto">
       <div>
@@ -70,9 +21,8 @@ const Register = () => {
         </button>
       </div>
       <div className="scroll-content">
-        <form action="">
-          
-        </form>
+        <h1 className="text-4xl font-bold text-blue-900">Register</h1>
+        <RegisterPartOne />
       </div>
     </div>
   );
