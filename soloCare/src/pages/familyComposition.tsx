@@ -5,8 +5,10 @@ import React, { useState, useRef, MouseEventHandler } from "react";
 import FamilyCompositionForm from "../components/FamilyCompositionForm";
 import { familyCompItem } from "../types/types";
 import { format } from "date-fns";
-
+import { useHistory } from "react-router";
+import Back from "../components/Back";
 const familyComposition: React.FC = () => {
+  const router = useHistory()
   const [isOpen, setIsOpen] = useState(false); // state of delete modal
   const [currentlyEditing, setCurrentlyEditing] = useState<number | null>(null); //index of the fam item that is being edited by the user.
   const [famComps, setFamComps] = useState<familyCompItem[]>([
@@ -97,9 +99,11 @@ const familyComposition: React.FC = () => {
           </div>
         </IonModal>
         <div className="p-5">
-          <h1 className="text-4xl font-bold text-blue-900">Register</h1>
+          
           {current == 0 ? (
             <div>
+              <Back func={()=>{router.goBack()}}/>
+              <h1 className="text-4xl font-bold text-blue-900">Register</h1>
               <p className="font-bold underline mb-5 mt-10">
                 Family Composition
               </p>
@@ -169,7 +173,7 @@ const familyComposition: React.FC = () => {
                 <p>Add Family Member</p>
               </button>
 
-              <button className="btn-primary mt-10">Submit</button>
+              <button onClick={()=>{router.push('/enterPassword')}} className="btn-primary mt-10">Submit</button>
             </div>
           ) : (
             <FamilyCompositionForm

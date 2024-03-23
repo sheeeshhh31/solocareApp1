@@ -34,7 +34,8 @@
     "react-hook-form": "^7.51.1",
     "react-ionicons": "^4.2.1",
     "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "recoil": "^0.7.7"
   },
   "devDependencies": {
     "@capacitor/cli": "5.7.1",

@@ -19,5 +19,13 @@ export type memberRegItem = {
     age:number,
     dateOfBirth:Date,
     placeOfBirth:string,
-    sex:string
+    sex:string,
+    educationalAttainment:string,
+    occupation:string,
+    monthlyIncome: string,
+    address:string,
+    homeStatus:string,
+    beneficiaryOf4Ps:string,
+    philhealth?: string
+    family:familyCompItem[]
 }

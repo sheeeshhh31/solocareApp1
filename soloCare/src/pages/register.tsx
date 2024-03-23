@@ -6,23 +6,17 @@ import InputWrapper from "../components/InputWrapper";
 import { useForm } from "react-hook-form";
 import { memberRegItem } from "../types/types";
 import RegisterPartOne from "../components/RegisterPartOne";
+import { useHistory } from "react-router";
+import Back from "../components/Back";
 const Register = () => {
-  
- 
+  const router = useHistory();
+
   return (
     <div className="w-screen h-screen p-5 overflow-y-auto">
-      <div>
-        <button
-          onClick={() => {
-            window.history.back();
-          }}
-        >
-          Back
-        </button>
-      </div>
+      <Back func={()=>{router.goBack()}} />
       <div className="scroll-content">
         <h1 className="text-4xl font-bold text-blue-900">Register</h1>
-        <RegisterPartOne />
+        <RegisterPartOne/>      
       </div>
     </div>
   );

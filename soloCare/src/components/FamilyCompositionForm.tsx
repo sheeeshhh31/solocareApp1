@@ -87,6 +87,7 @@ const FamilyCompositionForm: FunctionComponent<FamilyCompositionFormProps> = ({
   }, [watch("dateOfBirth")]);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <h1 className="text-4xl font-bold text-blue-900">Register</h1>
       <div className="flex gap-2 border-primary border-[1px] p-1 rounded-md my-5">
         <div>
           <AlertCircleOutline color="#00000" height="25px" width="25px" />

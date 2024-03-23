@@ -1,29 +1,43 @@
 import InputWrapper from "./InputWrapper";
-import { useRef,useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FunctionComponent } from "react";
 import { differenceInYears } from "date-fns";
 import { memberRegItem } from "../types/types";
 import { AlertCircleOutline } from "react-ionicons";
-interface RegisterPartOneProps {}
+import { useRecoilState } from "recoil";
+import { currentRegItem } from "../state/AppState";
+import { useHistory } from "react-router";
+interface RegisterPartOneProps {
+ 
+}
 
-const RegisterPartOne: FunctionComponent<RegisterPartOneProps> = () => {
-  const ageRef = useRef<number | string>("Age");
+const RegisterPartOne: FunctionComponent<RegisterPartOneProps> = ({
+
+}) => {
+  const router = useHistory()
+  const [regItem, setRegItem] = useRecoilState(currentRegItem);
+  const ageRef = useRef<number | null>();
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
+    setValue,
   } = useForm<memberRegItem>();
-  const onSubmit = (data: memberRegItem) => {};
-
+  const onSubmit = (data: memberRegItem) => {
+    setRegItem(data);
+    router.push('/nextRegister')
+  };
 
   useEffect(() => {
     if (watch("dateOfBirth")) {
       ageRef.current =
-        differenceInYears(new Date(), watch("dateOfBirth")) || "";
+        differenceInYears(new Date(), watch("dateOfBirth")) || undefined;
+      setValue("age", ageRef.current as number);
     }
   }, [watch("dateOfBirth")]);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="flex gap-2 border-primary border-[1px] p-1 rounded-md my-5">
@@ -108,24 +122,30 @@ const RegisterPartOne: FunctionComponent<RegisterPartOneProps> = () => {
             )}
           </InputWrapper>
         </div>
-        <div className="flex gap-5">
-          <InputWrapper label="Age" required={false}>
-            <input
-              {...register("age")}
-              value={ageRef.current}
-              type="text"
-              className="w-[70px]"
-              placeholder="Age"
-              disabled
-            />
-          </InputWrapper>
-          <InputWrapper className="grow" label="Birthdate" required={true}>
-            <input
-              {...register("dateOfBirth", { required: true })}
-              type="date"
-              placeholder="Birthdate"
-            />
-          </InputWrapper>
+        <div>
+          <div className="flex gap-5">
+            <InputWrapper label="Age" required={false}>
+              <input
+                {...register("age", {
+                  required: true,
+                  min: 18,
+                })}
+                type="text"
+                placeholder="Age"
+                className="w-[70px]"
+              />
+            </InputWrapper>
+            <InputWrapper className="grow" label="Birthdate" required={true}>
+              <input
+                {...register("dateOfBirth", { required: true })}
+                type="date"
+                placeholder="Birthdate"
+              />
+            </InputWrapper>
+          </div>
+          {errors.age && (
+            <p className="validation-error">Age should be 18 and above.</p>
+          )}
         </div>
         <InputWrapper label="Place of Birth" required={true}>
           <input
@@ -140,7 +160,6 @@ const RegisterPartOne: FunctionComponent<RegisterPartOneProps> = () => {
               <input
                 {...register("sex", { required: true })}
                 type="radio"
-                name="gender"
                 value="Male"
                 className="w-fit"
               />{" "}
@@ -150,7 +169,6 @@ const RegisterPartOne: FunctionComponent<RegisterPartOneProps> = () => {
               <input
                 {...register("sex", { required: true })}
                 type="radio"
-                name="gender"
                 value="Female"
                 className="w-fit"
               />
