@@ -12,6 +12,7 @@ const InputWrapper: FunctionComponent<InputWrapperProps> = ({
   className,
   required = false,
 }) => {
+  
   return (
     <div className={`flex flex-col ${className}`}>
       <label className="text-base">

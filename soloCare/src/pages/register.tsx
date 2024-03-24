@@ -8,17 +8,26 @@ import { memberRegItem } from "../types/types";
 import RegisterPartOne from "../components/RegisterPartOne";
 import { useHistory } from "react-router";
 import Back from "../components/Back";
+import { IonPage, IonContent } from "@ionic/react";
 const Register = () => {
   const router = useHistory();
 
   return (
-    <div className="w-screen h-screen p-5 overflow-y-auto">
-      <Back func={()=>{router.goBack()}} />
-      <div className="scroll-content">
-        <h1 className="text-4xl font-bold text-blue-900">Register</h1>
-        <RegisterPartOne/>      
-      </div>
-    </div>
+    <IonPage>
+      <IonContent>
+        <div className="w-screen h-screen p-5 overflow-y-auto">
+          <Back
+            func={() => {
+              router.goBack();
+            }}
+          />
+          <div className="scroll-content">
+            <h1 className="text-4xl font-bold text-blue-900">Register</h1>
+            <RegisterPartOne />
+          </div>
+        </div>
+      </IonContent>
+    </IonPage>
   );
 };
 

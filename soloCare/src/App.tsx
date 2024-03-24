@@ -55,7 +55,7 @@ const App: React.FC = () => (
   <RecoilRoot>
     <IonApp className="">
       <IonReactRouter>
-        <IonRouterOutlet>
+        <IonRouterOutlet animated={true}>
           <Route exact path="/home">
             <Home />
           </Route>
