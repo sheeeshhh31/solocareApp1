@@ -27,5 +27,10 @@ export type memberRegItem = {
     homeStatus:string,
     beneficiaryOf4Ps:string,
     philhealth?: string
-    family:familyCompItem[]
+    family:familyCompItem[],
+    password:string,
+    cPassword:string | null | undefined,
+    phoneNumber:number,
+    otp: number,
+    otpExpiry: Date
 }

@@ -1,10 +1,14 @@
 import { FunctionComponent } from "react";
 import InputWrapper from "../components/InputWrapper";
 import { useForm } from "react-hook-form";
-import { IonPage,IonContent } from "@ionic/react";
+import { IonPage, IonContent } from "@ionic/react";
 import { memberRegItem } from "../types/types";
 import Back from "../components/Back";
 import { useHistory } from "react-router";
+import { useRecoilState } from "recoil";
+import { currentRegItem } from "../state/AppState";
+import { instance } from "../config/axios";
+
 interface EnterPasswordProps {}
 
 const EnterPassword: FunctionComponent<EnterPasswordProps> = () => {
@@ -15,9 +19,20 @@ const EnterPassword: FunctionComponent<EnterPasswordProps> = () => {
     formState: { errors },
   } = useForm<memberRegItem>();
 
-  const route = useHistory();
-  const onSubmit = (data: memberRegItem) => {
-    console.log(data);
+  const router = useHistory();
+
+  const [regItem, setRegItem] = useRecoilState(currentRegItem);
+
+  const onSubmit = async (data: memberRegItem) => {
+    setRegItem({ ...regItem, ...data });
+    const res  = await instance.post('/register/uploadInitialInfo',{...regItem,...data})
+    console.log(res);
+    
+    if(res.status===200){
+      router.push(`/getRefNumber?ref=${res.data.finalData.ref}`)
+    }
+    
+   // router.push('/getRefNumber')
   };
   return (
     <IonPage>
@@ -29,7 +44,7 @@ const EnterPassword: FunctionComponent<EnterPasswordProps> = () => {
           >
             <Back
               func={() => {
-                route.push("/familyComposition");
+                router.push("/familyComposition");
               }}
             ></Back>
             <div className="flex flex-col gap-5 mt-10 grow  justify-center">
@@ -37,10 +52,24 @@ const EnterPassword: FunctionComponent<EnterPasswordProps> = () => {
                 Set up your password
               </h1>
               <InputWrapper label="Password" required={true}>
-                <input type="password" placeholder="Password" />
+                <input
+                  {...register("password", { required: true })}
+                  type="password"
+                  placeholder="Password"
+                />
               </InputWrapper>
               <InputWrapper label="Confirm Password" required={true}>
-                <input type="password" placeholder="Confirm Password" />
+                <input
+                  {...register("cPassword", {
+                    required: true,
+                    validate: (value) => value === watch("password"),
+                  })}
+                  type="password"
+                  placeholder="Confirm Password"
+                />
+                {errors.cPassword && (
+                  <p className="validation-error">Password do not match.</p>
+                )}
               </InputWrapper>
               <button type="submit" className="btn-primary mt-10">
                 Confirm

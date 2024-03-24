@@ -49,6 +49,7 @@ import requirementStatusresubmit from "./pages/requirementStatusresubmit";
 import requirementStatusapproved from "./pages/requirementStatusapproved";
 import { RecoilRoot } from "recoil";
 import EnterPassword from "./pages/enterPassword";
+import GetRefNumber from "./pages/getRefNumber";
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -85,6 +86,11 @@ const App: React.FC = () => (
             exact
             path="/enterPassword"
             component={EnterPassword}
+          ></Route>
+          <Route
+            exact
+            path="/getRefNumber"
+            component={GetRefNumber}
           ></Route>
           <Route
             exact
