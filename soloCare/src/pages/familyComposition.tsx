@@ -7,10 +7,13 @@ import { familyCompItem } from "../types/types";
 import { format } from "date-fns";
 import { useHistory } from "react-router";
 import Back from "../components/Back";
+import { useRecoilState } from "recoil";
+import { currentRegItem } from "../state/AppState";
 const familyComposition: React.FC = () => {
-  const router = useHistory()
+  const router = useHistory();
   const [isOpen, setIsOpen] = useState(false); // state of delete modal
   const [currentlyEditing, setCurrentlyEditing] = useState<number | null>(null); //index of the fam item that is being edited by the user.
+  const [regItem,setRegItem] = useRecoilState(currentRegItem)
   const [famComps, setFamComps] = useState<familyCompItem[]>([
     {
       givenName: "John",
@@ -99,10 +102,13 @@ const familyComposition: React.FC = () => {
           </div>
         </IonModal>
         <div className="p-5">
-          
           {current == 0 ? (
             <div>
-              <Back func={()=>{router.goBack()}}/>
+              <Back
+                func={() => {
+                  router.goBack();
+                }}
+              />
               <h1 className="text-4xl font-bold text-blue-900">Register</h1>
               <p className="font-bold underline mb-5 mt-10">
                 Family Composition
@@ -111,9 +117,9 @@ const familyComposition: React.FC = () => {
                 {famComps?.map((fam, index) => (
                   <div
                     key={index}
-                    className="border-[1px] border-primary rounded-lg flex"
+                    className="border-[1px] border-primary rounded-lg flex "
                   >
-                    <div className="p-3 font-bold fam-comp-card">
+                    <div className="p-3 font-bold fam-comp-card grow">
                       <p>
                         Name:{" "}
                         <span>
@@ -173,7 +179,18 @@ const familyComposition: React.FC = () => {
                 <p>Add Family Member</p>
               </button>
 
-              <button onClick={()=>{router.push('/enterPassword')}} className="btn-primary mt-10">Submit</button>
+              <button
+                onClick={() => {
+                  setRegItem({
+                    ...regItem,
+                    family: famComps
+                  })
+                  router.push("/enterPassword");
+                }}
+                className="btn-primary mt-10"
+              >
+                Submit
+              </button>
             </div>
           ) : (
             <FamilyCompositionForm

@@ -29,7 +29,7 @@ const EnterPassword: FunctionComponent<EnterPasswordProps> = () => {
     console.log(res);
     
     if(res.status===200){
-      router.push(`/getRefNumber?ref=${res.data.finalData.ref}`)
+      router.push(`/getRefNumber?ref=${res.data.ref}`)
     }
     
    // router.push('/getRefNumber')
