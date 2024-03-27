@@ -13,6 +13,9 @@ button{
 .btn-primary{
     @apply bg-primary
 }
+.btn-primary:disabled{
+    @apply bg-[#4b74b3]
+}
 .btn-secondary{
     @apply bg-black
 }

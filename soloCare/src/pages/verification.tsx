@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useLocation } from "react-router";
 import { useMaskito } from "@maskito/react";
 import { chevronBackOutline } from "ionicons/icons";
@@ -48,6 +48,7 @@ const Verification = () => {
     register,
     handleSubmit,
     watch,
+    setValue,
     formState: { errors },
   } = useForm<memberRegItem>();
 
@@ -61,8 +62,22 @@ const Verification = () => {
 
     console.log(res);
 
-    router.push("/getOtp");
+    if(res.status == 200){
+      router.push(`/getOtp?phone=${res.data.number}&ref=${refNumber}`);
+    }
   };
+
+  useEffect(()=>{
+    if(watch("phoneNumber")){
+      
+    
+      let formatted = watch('phoneNumber').toString().replace(/[^\d]|^0+/g, '');
+     
+      console.log(formatted);
+      
+      setValue("phoneNumber",formatted);
+    }
+  },[watch('phoneNumber')])
   return (
     <IonPage>
       <IonContent>
@@ -91,9 +106,10 @@ const Verification = () => {
                   <div className="countryCode">+63</div>
                   <input
                     {...register("phoneNumber", { required: true })}
-                    className="contact-number"
+                    className="w-full max-w-[360px]"
                    // value={phoneNumber}
                     type="tel"
+                    maxLength={10}
                     //onChange={handlePhoneNumberChange}
                     //ref={phoneInputRef}
                     placeholder="Enter your phone number"

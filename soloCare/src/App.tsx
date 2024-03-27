@@ -50,6 +50,7 @@ import requirementStatusapproved from "./pages/requirementStatusapproved";
 import { RecoilRoot } from "recoil";
 import EnterPassword from "./pages/enterPassword";
 import GetRefNumber from "./pages/getRefNumber";
+import RegistrationComplete from "./pages/registrationComplete";
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -91,6 +92,11 @@ const App: React.FC = () => (
             exact
             path="/getRefNumber"
             component={GetRefNumber}
+          ></Route>
+          <Route
+            exact
+            path="/registrationComplete"
+            component={RegistrationComplete}
           ></Route>
           <Route
             exact

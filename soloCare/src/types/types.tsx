@@ -30,7 +30,7 @@ export type memberRegItem = {
     family:familyCompItem[],
     password:string,
     cPassword:string | null | undefined,
-    phoneNumber:number,
+    phoneNumber:number|string,
     otp: number,
     otpExpiry: Date
 }
