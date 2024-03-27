@@ -163,7 +163,7 @@ const getOtp: React.FC = () => {
                   <p onClick={resendOTP} className="py-3 font-bold underline">Resend OTP</p>
                 )}
                 <p>or</p>
-                <p className="py-3 font-bold underline">Change Number</p>
+                <p onClick={()=>{router.goBack()}} className="py-3 font-bold underline">Change Number</p>
               </div>
             </div>
           </div>
