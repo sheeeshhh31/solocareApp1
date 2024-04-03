@@ -4,3 +4,7 @@ export const currentRegItem  = atom({
     key:'currentRegItem',
     default: {}
 })
+export const currentApplicationChecking  = atom({
+    key:'currentApplicationChecking',
+    default: {}
+})

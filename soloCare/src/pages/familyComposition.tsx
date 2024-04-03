@@ -60,6 +60,8 @@ const familyComposition: React.FC = () => {
     setDeleteIndex(index);
     setCurrentDeleteItem(famComps[index]);
   };
+ 
+  
   return (
     <IonPage>
       <IonContent className="scroll-content">

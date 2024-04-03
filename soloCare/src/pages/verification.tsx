@@ -10,6 +10,7 @@ import { instance } from "../config/axios";
 import { useForm } from "react-hook-form";
 import { memberRegItem } from "../types/types";
 import InputWrapper from "../components/InputWrapper";
+import { useIonLoading } from "@ionic/react";
 const Verification = () => {
   const router = useHistory();
   const location = useLocation();
@@ -51,33 +52,33 @@ const Verification = () => {
     setValue,
     formState: { errors },
   } = useForm<memberRegItem>();
-
+  const [present, dismiss] = useIonLoading();
   const onSubmit = async (data: memberRegItem) => {
-    console.log("AW");
-    
-    const res = await instance.post("/register/getOtp", {
-      phoneNumber:data.phoneNumber,
-      refNumber,
-    });
+    try {
+      present({ message: "Processing...", spinner: "circles" });
+      const res = await instance.post("/register/getOtp", {
+        phoneNumber: data.phoneNumber,
+        refNumber,
+      });
 
-    console.log(res);
-
-    if(res.status == 200){
-      router.push(`/getOtp?phone=${res.data.number}&ref=${refNumber}`);
-    }
+      if (res.status == 200) {
+        router.push(`/getOtp?phone=${res.data.number}&ref=${refNumber}`);
+      }
+    } catch (error) {}
+    dismiss();
   };
 
-  useEffect(()=>{
-    if(watch("phoneNumber")){
-      
-    
-      let formatted = watch('phoneNumber').toString().replace(/[^\d]|^0+/g, '');
-     
+  useEffect(() => {
+    if (watch("phoneNumber")) {
+      let formatted = watch("phoneNumber")
+        .toString()
+        .replace(/[^\d]|^0+/g, "");
+
       console.log(formatted);
-      
-      setValue("phoneNumber",formatted);
+
+      setValue("phoneNumber", formatted);
     }
-  },[watch('phoneNumber')])
+  }, [watch("phoneNumber")]);
   return (
     <IonPage>
       <IonContent>
@@ -107,7 +108,7 @@ const Verification = () => {
                   <input
                     {...register("phoneNumber", { required: true })}
                     className="w-full max-w-[360px]"
-                   // value={phoneNumber}
+                    // value={phoneNumber}
                     type="tel"
                     maxLength={10}
                     //onChange={handlePhoneNumberChange}
@@ -116,9 +117,7 @@ const Verification = () => {
                   />
                 </div>
                 {errors.phoneNumber && (
-                  <p className="validation-error">
-                    Field is required.
-                  </p>
+                  <p className="validation-error">Field is required.</p>
                 )}
               </InputWrapper>
               <button className="btn-primary" type="submit">

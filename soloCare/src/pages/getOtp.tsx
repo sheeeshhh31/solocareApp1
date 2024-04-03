@@ -19,7 +19,7 @@ import { chevronBackOutline } from "ionicons/icons";
 import "./main.css";
 import { useHistory, useLocation } from "react-router";
 import Back from "../components/Back";
-
+import { useIonLoading } from "@ionic/react";
 import { instance } from "../config/axios";
 const getOtp: React.FC = () => {
   const router = useHistory();
@@ -29,6 +29,8 @@ const getOtp: React.FC = () => {
   const ref = queryParams.get("ref");
 
   const otpLength = 4;
+
+  const [present,dismiss] = useIonLoading();
   const [otp, setOtp] = useState<string[]>(new Array(otpLength).fill(""));
   const [timer, setTimer] = useState<number>(0);
   const inputRefs = new Array(otpLength)
@@ -74,6 +76,7 @@ const getOtp: React.FC = () => {
 
   const handleConfirm = async () => {
     try {
+      present({message:'Processing...',spinner:'circles'})
       const inputOtp = otp.join("");
 
       const res = await instance.post("/register/verifyOtp", {
@@ -89,6 +92,7 @@ const getOtp: React.FC = () => {
         
       setErr(error.response.data.message);
     }
+    dismiss();
   };
 
   const resendOTP = async () => {

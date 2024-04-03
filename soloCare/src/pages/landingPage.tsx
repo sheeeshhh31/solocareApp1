@@ -1,7 +1,7 @@
 import { IonPage,IonContent } from "@ionic/react";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { useHistory } from "react-router";
-
+import { App } from "@capacitor/app";
 interface LandingPagProps {}
 
 const LandingPag: FunctionComponent<LandingPagProps> = () => {
@@ -16,9 +16,18 @@ const LandingPag: FunctionComponent<LandingPagProps> = () => {
   };
 
   const handleApplicationClick = () => {
-    history.push("/applicationStatusapproved");
+    history.push("/checkApplicationStatus");
   };
 
+  useEffect(()=>{
+   
+    const getWhat = async()=>{
+      console.log(await App.getInfo());
+      console.log(await App.getLaunchUrl());
+      
+    }
+    getWhat()
+  },[])
   return (
     <IonPage>
       <IonContent>

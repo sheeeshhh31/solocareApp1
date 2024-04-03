@@ -9,6 +9,7 @@ import { useRecoilState } from "recoil";
 import { currentRegItem } from "../state/AppState";
 import { instance } from "../config/axios";
 import { AlertCircleOutline } from "react-ionicons";
+import { useIonLoading } from "@ionic/react";
 interface EnterPasswordProps {}
 
 const EnterPassword: FunctionComponent<EnterPasswordProps> = () => {
@@ -20,21 +21,26 @@ const EnterPassword: FunctionComponent<EnterPasswordProps> = () => {
   } = useForm<memberRegItem>();
 
   const router = useHistory();
-
+  const [present, dismiss] = useIonLoading();
   const [regItem, setRegItem] = useRecoilState(currentRegItem);
 
   const onSubmit = async (data: memberRegItem) => {
-    setRegItem({ ...regItem, ...data });
-    const res = await instance.post("/register/uploadInitialInfo", {
-      ...regItem,
-      ...data,
-    });
-    console.log(res);
+    try {
+      present({ message: "Processing...", spinner: "circles" });
+      const inputs = {
+        ...regItem,
+        ...data,
+        applicationStatus: "pending",
+        dateCreated: new Date(),
+      };
+      setRegItem(inputs);
+      const res = await instance.post("/register/uploadInitialInfo", inputs);
 
-    if (res.status === 200) {
-      router.push(`/getRefNumber?ref=${res.data.ref}`);
-    }
-
+      if (res.status === 200) {
+        router.push(`/getRefNumber?ref=${res.data.ref}`);
+      }
+    } catch (error) {}
+    dismiss()
     // router.push('/getRefNumber')
   };
   return (

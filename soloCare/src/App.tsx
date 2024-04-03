@@ -51,6 +51,8 @@ import { RecoilRoot } from "recoil";
 import EnterPassword from "./pages/enterPassword";
 import GetRefNumber from "./pages/getRefNumber";
 import RegistrationComplete from "./pages/registrationComplete";
+import CheckApplicationStatus from "./pages/checkApplicationStatus";
+import ApplicationStatus from "./pages/applicationStatus";
 setupIonicReact();
 
 const App: React.FC = () => (
@@ -102,6 +104,16 @@ const App: React.FC = () => (
             exact
             path="/classification"
             component={classification}
+          ></Route>
+          <Route
+            exact
+            path="/checkApplicationStatus"
+            component={CheckApplicationStatus}
+          ></Route>
+          <Route
+            exact
+            path="/applicationStatus"
+            component={ApplicationStatus}
           ></Route>
           <Route
             exact

@@ -11,7 +11,7 @@ const splashScreen : React.FC = () => {
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
-          history.push('/landingPage.tsx');
+          history.push('/landingPage');
         }, getRandomDelay());
 
         return () => clearTimeout(timeoutId);

@@ -9,7 +9,9 @@
 button{
     @apply p-3 rounded-lg w-full text-white
 }
-
+h1{
+  @apply text-primary  
+}
 .btn-primary{
     @apply bg-primary
 }
@@ -33,4 +35,7 @@ select{
 }
 .validation-error{
     @apply text-red-400 font-normal text-sm
+}
+.main-container{
+    @apply p-5 h-screen w-screen flex flex-col
 }

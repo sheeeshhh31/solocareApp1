@@ -32,5 +32,9 @@ export type memberRegItem = {
     cPassword:string | null | undefined,
     phoneNumber:number|string,
     otp: number,
-    otpExpiry: Date
+    otpExpiry: Date,
+    classification:number,
+    pickupDate?:Date,
+    dateCreated: Date,
+    dateUpdated: Date,
 }

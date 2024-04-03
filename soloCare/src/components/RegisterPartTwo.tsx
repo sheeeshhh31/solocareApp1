@@ -25,6 +25,17 @@ const RegisterPartTwo: FunctionComponent<RegisterPartTwoProps> = () => {
     route.push("/familyComposition");
   };
 
+  const classifications: string[] = [
+    "Biyudo/Biyuda",
+    "Hiwalay sa asawa (at least 6 months)",
+    "Napakawalang bisa o Annuled ang kasal",
+    "Inabandona o iniwan ng kinakasama (for at least 6 months)",
+    "Sinumang indibidwal na tumatayo na Magulang ng bata/ ng mga bata",
+    "Sinumang miyembro ng pamilya na tumatayo bilang head of the family bunga ng pag-abandona, pagkawala o matagal na pagkakawalay ng magulang o solo parent",
+    "Biktima ng panggagahasa",
+    "Asawa ng nakulong at/o  hinatulan ng mabilanggo (for at least 3 months)",
+    "Hindi sapat ang mental o pisikal ng asawa/kinakasama/anak - w/ Doctor's certificate"
+  ];
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -140,6 +151,15 @@ const RegisterPartTwo: FunctionComponent<RegisterPartTwoProps> = () => {
               type="text"
               placeholder="Philhealth"
             />
+          </InputWrapper>
+          <InputWrapper label="Classification" required={true}>
+            <select {...register("classification", { required: true })}>
+              {classifications.map((classification, index) => (
+                <option key={index} value={index} className="text-wrap">
+                  {classification}
+                </option>
+              ))}
+            </select>
           </InputWrapper>
         </div>
         <div>
